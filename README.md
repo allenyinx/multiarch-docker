@@ -1,0 +1,1 @@
+# multiple architecture docker sample
