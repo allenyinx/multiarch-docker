@@ -12,7 +12,7 @@ initialize-builder:
 build:
 	docker buildx build \
 		--platform linux/amd64,linux/arm64,linux/arm/v7 \
-		-t sidpalas/multi-arch-test:latest \
+		-t allenyinx/multiarch-docker:latest \
 		--push \
 		.
 
@@ -21,17 +21,17 @@ run:
 	docker run -i -d --rm \
 		-p 8080:8080 \
 		--name $(CONTAINER_NAME) \
-		sidpalas/multi-arch-test
+		allenyinx/multiarch-docker
 
 ARM_SHA?=660432aec93b84c61d24541e5cf135491829df01ac900a20de325f8726f6118c
 run-arm:
 	docker run -i -d --rm \
 		-p 8080:8080 \
 		--name $(CONTAINER_NAME) \
-		sidpalas/multi-arch-test@sha256:$(ARM_SHA)
+		allenyinx/multiarch-docker@sha256:$(ARM_SHA)
 
 stop:
 	docker stop $(CONTAINER_NAME)
 
 inspect:
-	docker buildx imagetools inspect sidpalas/multi-arch-test:latest
+	docker buildx imagetools inspect allenyinx/multiarch-docker:latest
